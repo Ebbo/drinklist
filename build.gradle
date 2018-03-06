@@ -1,0 +1,31 @@
+group 'me.ebbo'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.2.20'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'javax.activation', name: 'activation', version: '1.1'
+    compile group: 'org.apache.commons', name: 'commons-email', version: '1.4'
+    compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+    compile 'no.tornado:tornadofx:1.7.15'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
